@@ -1,0 +1,97 @@
+<!DOCYTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml lang="en">
+
+	<head>
+
+		<meta charset="utf-8"/>
+
+		<title>Entity</title>
+
+		<style>
+
+			.entity-form { padding:20px; }
+
+			.entity-form .field { padding: 4px; margin:1px; background: #eee; }
+
+			.entity-form .field label { display:inline-block; width:120px; margin-left:5px; }
+
+			.entity-form .field input { display:inline-block; }
+
+			.entity-form .text label {
+				display:block;
+			}
+
+			textarea { resize: none; }
+
+		</style>
+
+	<script src="./scripts/entity-form.js"></script>
+
+	</head>
+
+	<body>
+		<h1>Entity</h1>
+
+		<hr />
+
+		<form class="entity-form" id="entityForm">
+
+			<div class="field">
+				<label for="entity_name" title="The name of this entity.">Name:</label>
+				<input form="entityForm" type="text" id="entity_name" name="entity_name" size="40"></input>
+			</div>
+
+			<div class="field">
+				<label for="entity_model" title="The model name of this entity.">Model:</label>
+				<input form="entityForm" type="text" id="entity_model" name="entity_model" size="40"></input>
+			</div>
+
+			<div class="field">
+				<label for="entity_type" title="The type of this entity (e.g. router, switch, NAS, computer).">Type:</label>
+				<input form="entityForm" type="text" id="entity_type" name="entity_type" size="40"></input>
+			</div>
+
+			<br />
+
+			<div class="field" title="The IP address of this entity (either as IPv4 or IPv6).">
+				<label for="entity_ip">IP address:</label>
+				<input form="entityForm" type="text" id="entity_ip" name="entity_ip" size="40"></input>
+			</div>
+
+			<div class="field">
+				<label for="entity_mac" title="The mac address of this entity.">MAC address:</label>
+				<input form="entityForm" type="text" id="entity_mac" name="entity_mac"size="40"></input>
+			</div>
+
+			<br />
+
+			<div class="field">
+				<label for="entity_url" title="The URL to the administration console of this entity.">URL:</label>
+				<input form="entityForm" type="text" id="entity_url" name="entity_url"size="80"></input>
+				<button form="entityForm" type="button" name="open_url" onClick="openURL(this)" title="Tries to open the specified URL in a new tab."><img src="./icons/link39.svg" width="16" height="16" border="0"></img></button>
+			</div>
+
+			<br />
+
+			<div class="text" title="Additional informations for this entity which are not provided in the fields above.">
+				<label for="entity_description">Description:</label>
+				<textarea form="entityForm" rows="8" cols="80" id="entity_description" name="entity_description">
+				</textarea>
+			</div>
+
+		</form>
+
+
+		<footer>
+
+			<hr />
+
+			<p align="middle">
+				<a href="./icons/credits.html" target="_blank">credits for icons</a>
+			</p>
+
+		</footer>
+
+	</body>
+
+</html>
