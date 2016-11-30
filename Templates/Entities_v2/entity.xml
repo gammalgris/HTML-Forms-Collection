@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="./stylesheets/entity.xsl" type="text/xsl" ?>
+
+<entity
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.entity-form.org .\structure\entity.xsd"
+  xmlns="http://www.entity-form.org">
+
+  <name>AB</name>
+  <model>CD</model>
+  <entity-type>?</entity-type>
+  <ip-address>
+    <!-- ipv4>127.0.0.1</ipv4 -->
+    <ipv6>1:2:3:4:5:6:7:8</ipv6>
+  </ip-address>
+  <mac-address>00:50:56:C0:00:08</mac-address>
+  <url>http://www.heise.de/</url>
+  <description>Hallo Welt!</description>
+
+</entity>

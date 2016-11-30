@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.entity-form.org"
+  targetNamespace="http://www.entity-form.org"
+  elementFormDefault="qualified">
+
+
+  <xsd:simpleType name="NameElement">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20" />
+      <xsd:minLength value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ModelElement">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20" />
+      <xsd:minLength value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="EntityTypeElement">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="FW" />
+      <xsd:enumeration value="NAS" />
+      <xsd:enumeration value="PC" />
+      <xsd:enumeration value="Router" />
+      <xsd:enumeration value="Switch" />
+      <xsd:enumeration value="VM" />
+      <xsd:enumeration value="VM-Host" />
+      <xsd:enumeration value="?" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="IpAddressElement">
+    <xsd:choice minOccurs="1" maxOccurs="1">
+      <xsd:element name="ipv4" type="IPv4Element" />
+      <xsd:element name="ipv6" type="IPv6Element" />
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:simpleType name="IPv4Element">
+      <xsd:restriction base="xsd:string">
+        <xsd:pattern value="((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" />
+      </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="IPv6Element">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="MacAddressElement">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="UrlElement">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="100" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="DescriptionElement">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="1000" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="EntityElement">
+    <xsd:sequence>
+      <xsd:element name="name" type="NameElement" />
+      <xsd:element name="model" type="ModelElement" />
+      <xsd:element name="entity-type" type="EntityTypeElement" />
+      <xsd:element name="ip-address" type="IpAddressElement" />
+      <xsd:element name="mac-address" type="MacAddressElement" />
+      <xsd:element name="url" type="UrlElement" />
+      <xsd:element name="description" type="DescriptionElement" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:element name="entity" type="EntityElement" />
+
+</xsd:schema>
