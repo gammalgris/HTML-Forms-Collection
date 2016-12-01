@@ -71,7 +71,8 @@ set subroutineCalls.length=
 :defineConstants
 
 	set DEFAULT_INDEX_FILE=index.html
-	set DEFAULT_FILE_PATTERN=*.xml
+	set DEFAULT_FILE_EXTENSION=.xml
+	set DEFAULT_FILE_PATTERN=*%DEFAULT_FILE_EXTENSION%
 
 %return%
 
@@ -154,9 +155,20 @@ set subroutineCalls.length=
 		echo 	^<head^>
 		echo 		^<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /^>
 		echo 		^<title^>Index^</title^>
+		echo 		^<style^>
+		echo 			.left {
+		echo 				float: left;
+		echo 				width: 10%%;
+		echo 			}
+		echo 			.right {
+		echo 				margin-left: 10%%;
+		echo 			}
+		echo 		^</style^>
 		echo 	^</head^>
 		echo.
 		echo 	^<body^>
+		echo.
+		echo 		^<div class="left"^>
 		echo.
 	) > %_fileName%
 
@@ -250,13 +262,21 @@ set subroutineCalls.length=
 
 	endlocal & set "__shortFileName=%__tmp%"
 
+	setlocal EnableDelayedExpansion
+
+		set "__tmp=%__shortFileName%"
+		set "__tmp=!__tmp:%DEFAULT_FILE_EXTENSION%=!"
+
+	endlocal & set "__shortName=%__tmp%"
+
 	(
-		echo 			^<li^>^<a href="%__shortFileName%" target=_blank^>%__shortFileName%^</a^>^</li^>
+		echo 			^<li^>^<a href="%__shortFileName%" target="details"^>%__shortName%^</a^>^</li^>
 	) >> %__fileName%
 
 
-	set __currentDirectory=
+	set __shortName=
 	set __shortFileName=
+	set __currentDirectory=
 	set __listItem=
 	set __fileName=
 
@@ -285,6 +305,10 @@ set subroutineCalls.length=
 
 
 	(
+		echo 		^</div^>
+		echo 		^<div class="right"^>
+		echo 			^<iframe name="details" width="800" height="650" /^>
+		echo 		^</div^>
 		echo.
 		echo 	^</body^>
 		echo.
