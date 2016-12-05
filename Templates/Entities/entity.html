@@ -42,25 +42,35 @@
 			</div>
 
 			<div class="field">
+				<label for="entity_type" title="The type of this entity (e.g. router, switch, NAS, computer).">Type:</label>
+				<input form="entityForm" type="text" id="entity_type" name="entity_type" size="40"></input>
+			</div>
+
+			<div class="field">
 				<label for="entity_model" title="The model name of this entity.">Model:</label>
 				<input form="entityForm" type="text" id="entity_model" name="entity_model" size="40"></input>
 			</div>
 
 			<div class="field">
-				<label for="entity_type" title="The type of this entity (e.g. router, switch, NAS, computer).">Type:</label>
-				<input form="entityForm" type="text" id="entity_type" name="entity_type" size="40"></input>
+				<label for="entity_sn" title="The serial number of this entity.">Serial No.:</label>
+				<input form="entityForm" type="text" id="entity_sn" name="entity_sn" size="40"></input>
 			</div>
 
 			<br />
+
+			<div class="field">
+				<label for="entity_mac" title="The mac address of this entity.">MAC address:</label>
+				<input form="entityForm" type="text" id="entity_mac" name="entity_mac"size="40"></input>
+			</div>
 
 			<div class="field" title="The IP address of this entity (either as IPv4 or IPv6).">
 				<label for="entity_ip">IP address:</label>
 				<input form="entityForm" type="text" id="entity_ip" name="entity_ip" size="40"></input>
 			</div>
 
-			<div class="field">
-				<label for="entity_mac" title="The mac address of this entity.">MAC address:</label>
-				<input form="entityForm" type="text" id="entity_mac" name="entity_mac"size="40"></input>
+			<div class="field" title="The subnet mask for the IP address.">
+				<label for="entity_subnet">subnet mask:</label>
+				<input form="entityForm" type="text" id="entity_subnet" name="entity_subnet" size="40"></input>
 			</div>
 
 			<br />

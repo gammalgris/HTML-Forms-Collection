@@ -14,13 +14,6 @@
     </xsd:restriction>
   </xsd:simpleType>
 
-  <xsd:simpleType name="ModelElement">
-    <xsd:restriction base="xsd:string">
-      <xsd:maxLength value="20" />
-      <xsd:minLength value="2" />
-    </xsd:restriction>
-  </xsd:simpleType>
-
   <xsd:simpleType name="EntityTypeElement">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="FW" />
@@ -31,6 +24,26 @@
       <xsd:enumeration value="VM" />
       <xsd:enumeration value="VM-Host" />
       <xsd:enumeration value="?" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ModelElement">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20" />
+      <xsd:minLength value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="SerialNumberElement">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20" />
+      <xsd:minLength value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="MacAddressElement">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})" />
     </xsd:restriction>
   </xsd:simpleType>
 
@@ -53,9 +66,22 @@
     </xsd:restriction>
   </xsd:simpleType>
 
-  <xsd:simpleType name="MacAddressElement">
+  <xsd:complexType name="SubnetMaskElement">
+    <xsd:choice minOccurs="1" maxOccurs="1">
+      <xsd:element name="subnet-bitmask" type="BitmaskNotationSubnetMaskElement" />
+      <xsd:element name="subnet-cidr" type="CIDRNotationSubnetMaskElement" />
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:simpleType name="BitmaskNotationSubnetMaskElement">
+      <xsd:restriction base="xsd:string">
+        <xsd:pattern value="(((255\.){3}(255|254|252|248|240|224|192|128|0+))|((255\.){2}(255|254|252|248|240|224|192|128|0+)\.0)|((255\.)(255|254|252|248|240|224|192|128|0+)(\.0+){2})|((255|254|252|248|240|224|192|128|0+)(\.0+){3}))" />
+      </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CIDRNotationSubnetMaskElement">
     <xsd:restriction base="xsd:string">
-      <xsd:pattern value="([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})" />
+      <xsd:pattern value="([/](([1][0-2][0-9])|([1-9][0-9])|([1-9])))" />
     </xsd:restriction>
   </xsd:simpleType>
 
@@ -74,10 +100,12 @@
   <xsd:complexType name="EntityElement">
     <xsd:sequence>
       <xsd:element name="name" type="NameElement" />
-      <xsd:element name="model" type="ModelElement" />
       <xsd:element name="entity-type" type="EntityTypeElement" />
-      <xsd:element name="ip-address" type="IpAddressElement" />
+      <xsd:element name="model" type="ModelElement" />
+      <xsd:element name="serial-no" type="SerialNumberElement" />
       <xsd:element name="mac-address" type="MacAddressElement" />
+      <xsd:element name="ip-address" type="IpAddressElement" />
+      <xsd:element name="subnet-mask" type="SubnetMaskElement" />
       <xsd:element name="url" type="UrlElement" />
       <xsd:element name="description" type="DescriptionElement" />
     </xsd:sequence>

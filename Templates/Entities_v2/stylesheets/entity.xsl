@@ -37,7 +37,6 @@
           }
           textarea { resize: none; }
         </style>
-        <script src="./scripts/entity-form.js"></script>
       </head>
       <body>
         <h1><xsl:value-of select="$title" /></h1>
@@ -64,7 +63,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:entity | ef:ip-address">
+  <xsl:template match="ef:entity | ef:ip-address | ef:subnet-mask">
     <!-- <p>skip <b><xsl:value-of select="name()" /></b></p> -->
     <xsl:apply-templates />
   </xsl:template>
@@ -89,18 +88,6 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:model">
-    <xsl:call-template name="insertTextField">
-      <xsl:with-param name="label" select="local-name()" />
-      <xsl:with-param name="value" select="text()" />
-      <xsl:with-param name="formName" select='"entityForm"' />
-      <xsl:with-param name="idName" select='"entity_model"' />
-      <xsl:with-param name="tooltip" select='"The model name of this entity."' />
-      <xsl:with-param name="length" select='"40"' />
-    </xsl:call-template>
-  </xsl:template>
-
-
   <xsl:template match="ef:entity-type">
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
@@ -113,6 +100,43 @@
   </xsl:template>
 
 
+  <xsl:template match="ef:model">
+    <xsl:call-template name="insertTextField">
+      <xsl:with-param name="label" select="local-name()" />
+      <xsl:with-param name="value" select="text()" />
+      <xsl:with-param name="formName" select='"entityForm"' />
+      <xsl:with-param name="idName" select='"entity_model"' />
+      <xsl:with-param name="tooltip" select='"The model name of this entity."' />
+      <xsl:with-param name="length" select='"40"' />
+    </xsl:call-template>
+  </xsl:template>
+
+
+  <xsl:template match="ef:serial-no">
+    <xsl:call-template name="insertTextField">
+      <xsl:with-param name="label" select="local-name()" />
+      <xsl:with-param name="value" select="text()" />
+      <xsl:with-param name="formName" select='"entityForm"' />
+      <xsl:with-param name="idName" select='"entity_sn"' />
+      <xsl:with-param name="tooltip" select='"The serial number of this entity."' />
+      <xsl:with-param name="length" select='"40"' />
+    </xsl:call-template>
+  </xsl:template>
+
+
+  <xsl:template match="ef:mac-address">
+    <br />
+    <xsl:call-template name="insertTextField">
+      <xsl:with-param name="label" select="local-name()" />
+      <xsl:with-param name="value" select="text()" />
+      <xsl:with-param name="formName" select='"entityForm"' />
+      <xsl:with-param name="idName" select='"entity_mac"' />
+      <xsl:with-param name="tooltip" select='"The mac address of this entity."' />
+      <xsl:with-param name="length" select='"40"' />
+    </xsl:call-template>
+  </xsl:template>
+
+
   <xsl:template match="ef:ipv4">
     <br />
     <xsl:call-template name="insertTextField">
@@ -120,7 +144,7 @@
       <xsl:with-param name="value" select="text()" />
       <xsl:with-param name="formName" select='"entityForm"' />
       <xsl:with-param name="idName" select='"entity_ip"' />
-      <xsl:with-param name="tooltip" select='"The IP address of this entity (either as IPv4 or IPv6)."' />
+      <xsl:with-param name="tooltip" select='"The IP address of this entity (as IPv4 address)."' />
       <xsl:with-param name="length" select='"40"' />
     </xsl:call-template>
   </xsl:template>
@@ -133,19 +157,31 @@
       <xsl:with-param name="value" select="text()" />
       <xsl:with-param name="formName" select='"entityForm"' />
       <xsl:with-param name="idName" select='"entity_ip"' />
-      <xsl:with-param name="tooltip" select='"The IP address of this entity (either as IPv4 or IPv6)."' />
+      <xsl:with-param name="tooltip" select='"The IP address of this entity (as IPv6 address)."' />
       <xsl:with-param name="length" select='"40"' />
     </xsl:call-template>
   </xsl:template>
 
 
-  <xsl:template match="ef:mac-address">
+  <xsl:template match="ef:subnet-bitmask">
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
       <xsl:with-param name="value" select="text()" />
       <xsl:with-param name="formName" select='"entityForm"' />
-      <xsl:with-param name="idName" select='"entity_mac"' />
-      <xsl:with-param name="tooltip" select='"The mac address of this entity."' />
+      <xsl:with-param name="idName" select='"entity_subnet"' />
+      <xsl:with-param name="tooltip" select='"The subnet mask for this IP address (bitmask notation)."' />
+      <xsl:with-param name="length" select='"40"' />
+    </xsl:call-template>
+  </xsl:template>
+
+
+  <xsl:template match="ef:subnet-cidr">
+    <xsl:call-template name="insertTextField">
+      <xsl:with-param name="label" select="local-name()" />
+      <xsl:with-param name="value" select="text()" />
+      <xsl:with-param name="formName" select='"entityForm"' />
+      <xsl:with-param name="idName" select='"entity_subnet"' />
+      <xsl:with-param name="tooltip" select='"The subnet mask for this IP address (CIDR notation)."' />
       <xsl:with-param name="length" select='"40"' />
     </xsl:call-template>
   </xsl:template>
@@ -153,7 +189,7 @@
 
   <xsl:template match="ef:url">
     <br />
-    <xsl:call-template name="insertTextFieldWithButton">
+    <xsl:call-template name="insertURL">
       <xsl:with-param name="label" select="local-name()" />
       <xsl:with-param name="value" select="text()" />
       <xsl:with-param name="formName" select='"entityForm"' />
@@ -192,7 +228,7 @@
   </xsl:template>
 
 
-  <xsl:template name="insertTextFieldWithButton">
+  <xsl:template name="insertURL">
     <xsl:param name="label" />
     <xsl:param name="value" />
     <xsl:param name="formName" />
@@ -201,8 +237,7 @@
     <xsl:param name="length" />
     <div class="field">
       <label for="{$idName}" title="{$tooltip}"><xsl:value-of select="$label"/>:</label>
-      <input form="{$formName}" type="text" id="{$idName}" name="{$idName}" size="{$length}" value="{$value}" />
-      <button form="entityForm" type="button" name="open_url" onClick="openURL(this)" title="Tries to open the specified URL in a new tab."><img src="./icons/link39.svg" width="16" height="16" border="0" alt="open URL"></img></button>
+      <a href="{$value}"><xsl:value-of select="$value"/></a>
     </div>
   </xsl:template>
 
