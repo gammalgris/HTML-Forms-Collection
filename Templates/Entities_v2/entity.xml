@@ -19,6 +19,7 @@
     <!-- subnet-bitmask>255.0.0.0</subnet-bitmask -->
     <subnet-cidr>/8</subnet-cidr>
   </subnet-mask>
+  <firmware-version></firmware-version>
   <url>http://www.heise.de/</url>
   <description>Hallo Welt!</description>
 

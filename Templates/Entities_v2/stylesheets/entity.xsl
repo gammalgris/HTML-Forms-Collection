@@ -187,6 +187,19 @@
   </xsl:template>
 
 
+  <xsl:template match="ef:firmware-version">
+    <br />
+    <xsl:call-template name="insertTextField">
+      <xsl:with-param name="label" select="local-name()" />
+      <xsl:with-param name="value" select="text()" />
+      <xsl:with-param name="formName" select='"entityForm"' />
+      <xsl:with-param name="idName" select='"entity_firmware"' />
+      <xsl:with-param name="tooltip" select='"The firmware version of this entity."' />
+      <xsl:with-param name="length" select='"40"' />
+    </xsl:call-template>
+  </xsl:template>
+
+
   <xsl:template match="ef:url">
     <br />
     <xsl:call-template name="insertURL">

@@ -29,15 +29,13 @@
 
   <xsd:simpleType name="ModelElement">
     <xsd:restriction base="xsd:string">
-      <xsd:maxLength value="20" />
-      <xsd:minLength value="2" />
+      <xsd:maxLength value="40" />
     </xsd:restriction>
   </xsd:simpleType>
 
   <xsd:simpleType name="SerialNumberElement">
     <xsd:restriction base="xsd:string">
-      <xsd:maxLength value="20" />
-      <xsd:minLength value="2" />
+      <xsd:maxLength value="40" />
     </xsd:restriction>
   </xsd:simpleType>
 
@@ -85,6 +83,12 @@
     </xsd:restriction>
   </xsd:simpleType>
 
+  <xsd:simpleType name="FirmwareVersionElement">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="40" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
   <xsd:simpleType name="UrlElement">
     <xsd:restriction base="xsd:string">
       <xsd:maxLength value="100" />
@@ -105,7 +109,8 @@
       <xsd:element name="serial-no" type="SerialNumberElement" />
       <xsd:element name="mac-address" type="MacAddressElement" />
       <xsd:element name="ip-address" type="IpAddressElement" />
-      <xsd:element name="subnet-mask" type="SubnetMaskElement" />
+      <xsd:element name="subnet-mask" type="SubnetMaskElement" minOccurs="0" maxOccurs="1" />
+      <xsd:element name="firmware-version" type="FirmwareVersionElement" />
       <xsd:element name="url" type="UrlElement" />
       <xsd:element name="description" type="DescriptionElement" />
     </xsd:sequence>
