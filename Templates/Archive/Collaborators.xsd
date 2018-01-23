@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.content-archive.org"
+    targetNamespace="http://www.content-archive.org"
+    elementFormDefault="qualified">
+
+
+    <xsd:complexType name="CollaboratorElement">
+        <xsd:sequence>
+            <xsd:element name="firstName" type="FirstNameElement" />
+            <xsd:element name="middleName" type="MiddleNameElement" />
+            <xsd:element name="familyName" type="FamilyNameElement" />
+            <xsd:element name="collaborationRoles" type="CollaborationRolesElement" />
+            <xsd:element name="webReferences" type="WebReferencesElement" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="CollaboratorsElement">
+        <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="collaborator" type="CollaboratorElement" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="FamilyNameElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:string" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="FirstNameElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:string" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="MiddleNameElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:string" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="CollaborationRoleElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:string" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="CollaborationRolesElement">
+        <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="collaborationRole" type="CollaborationRoleElement" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="WebReferenceElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:anyURI" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="WebReferencesElement">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="webReference" type="WebReferenceElement" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="collaborators" type="CollaboratorsElement" />
+
+
+</xsd:schema>

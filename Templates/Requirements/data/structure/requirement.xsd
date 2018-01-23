@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:complexType name="AuthorElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the full or abreviated name of an author.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+
+  <xsd:complexType name="AuthorsElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains a list of authors.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="author" type="AuthorElement" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ChildElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the ID of a child requirement (i.e. derived requirement).
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+
+  <xsd:complexType name="ChildrenElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains a list of child requirements.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="child" type="ChildElement" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="CommentElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains all comments to the requirement.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+
+  <xsd:complexType name="DescriptionElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the actual requirement text.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+
+  <xsd:complexType name="IdElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the ID of a requirement.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+
+  <xsd:complexType name="NameElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the name of a requirement.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+
+  <xsd:complexType name="ParentElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the ID of the parent requirement.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+
+  <xsd:complexType name="ParentsElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains a list of parent requirements.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="parent" type="ParentElement" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="PriorityElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the priority of the requirement.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="high" />
+      <xsd:enumeration value="medium" />
+      <xsd:enumeration value="low" />
+      <xsd:enumeration value="optional" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="PurposeElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the purpose of the requirement (e.g. elaboration of another requirement).
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+
+  <xsd:complexType name="RequirementElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element represents a requirement with all relevant details.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="id" type="IdElement" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="name" type="NameElement" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="purpose" type="PurposeElement" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="scope" type="ScopeElement" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="priority" type="PriorityElement" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="status" type="StatusElement" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="parents" type="ParentsElement" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="children" type="ChildrenElement" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="authors" type="AuthorsElement" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="description" type="DescriptionElement" minOccurs="1" maxOccurs="1" />
+      <xsd:element name="comment" type="CommentElement" minOccurs="1" maxOccurs="1" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ScopeElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the scope of the requirement (i.e. which topic is covered).
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+
+  <xsd:simpleType name="StatusElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the status of a requirement.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="implemented" />
+      <xsd:enumeration value="pending" />
+      <xsd:enumeration value="deprecated" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <xsd:element name="requirement" type="RequirementElement" />
+
+</xsd:schema>

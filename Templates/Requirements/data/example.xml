@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="./style/requirement.xsl" type="text/xsl" ?>
+
+<requirement
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="./structure/requirement.xsd">
+
+  <id>REQ-0001</id>
+  <name>a test requirement</name>
+  <purpose>elaboration of parent requirement</purpose>
+  <scope>concept</scope>
+  <priority>low</priority>
+  <status>deprecated</status>
+  <parents>
+    <parent>REQ-0000</parent>
+  </parents>
+  <children>
+    <child>REQ-0002</child>
+    <child>REQ-0003</child>
+  </children>
+  <authors>
+    <author>KK</author>
+    <author>LL</author>
+  </authors>
+  <description>Hello World!</description>
+  <comment>This works.</comment>
+</requirement>

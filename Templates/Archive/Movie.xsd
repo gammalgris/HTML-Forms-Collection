@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.content-archive.org"
+    targetNamespace="http://www.content-archive.org"
+    elementFormDefault="qualified">
+
+
+    <xsd:complexType name="MovieElement">
+        <xsd:sequence>
+            <xsd:element name="title" type="TitleElement" />
+            <xsd:element name="releaseDate" type="ReleaseDateElement" />
+            <xsd:element name="recordingDate" type="ReleaseDateElement" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="runningTime" type="RunningTimeElement" />
+            <xsd:element name="webReferences" type="WebReferencesElement" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TitleElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:string" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="RecordingDateElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:string" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ReleaseDateElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:string" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="RunningTimeElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:string" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="WebReferenceElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:anyURI" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="WebReferencesElement">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="webReference" type="WebReferenceElement" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="movie" type="MovieElement" />
+
+
+</xsd:schema>

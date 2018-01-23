@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.content-archive.org"
+    targetNamespace="http://www.content-archive.org"
+    elementFormDefault="qualified">
+
+
+    <xsd:complexType name="ClassificationElement">
+        <xsd:simpleContent>
+            <xsd:restriction base="xsd:string" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ClassificationsElement">
+        <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="classification" type="ClassificationElement" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="classifications" type="ClassificationsElement" />
+
+
+</xsd:schema>
