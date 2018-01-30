@@ -158,7 +158,7 @@ set subroutineCalls.length=
 		echo 		^<style^>
 		echo 			.left {
 		echo 				float: left;
-		echo 				width: 10%%;
+		echo 				width: 20%%;
 		echo 			}
 		echo 			.right {
 		echo 				margin-left: 10%%;
@@ -206,9 +206,9 @@ set subroutineCalls.length=
 		echo 		^<ul^>
 	) >> %_fileName%
 
-	for /f "delims=*" %%A in ('dir /A-D /B /S "%DEFAULT_FILE_PATTERN%" 2^>nul ^| sort') do (
+	for /f "delims=*" %%A in ('forfiles /s /m %DEFAULT_FILE_PATTERN% /c "cmd /c echo @relpath"') do (
 
-		call:writeListItem "%_fileName%" "%%A"
+		call:writeListItem "%_fileName%" %%A
 	)
 
 	(
@@ -307,7 +307,7 @@ set subroutineCalls.length=
 	(
 		echo 		^</div^>
 		echo 		^<div class="right"^>
-		echo 			^<iframe name="details" width="800" height="650" /^>
+		echo 			^<iframe name="details" width="800" height="800" /^>
 		echo 		^</div^>
 		echo.
 		echo 	^</body^>

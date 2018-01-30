@@ -3,8 +3,7 @@
 <xsl:stylesheet
   version="2.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:ef="http://www.entity-form.org">
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 
   <xsl:output method="html" version="1.0" encoding="UTF-8" />
@@ -13,7 +12,7 @@
   <xsl:variable name="rootNodeName" select="name(/*)" />
 
 
-  <xsl:variable name="entityType" select="/ef:entity/ef:entity-type" />
+  <xsl:variable name="entityType" select="/entity/entity-type" />
 
 
   <xsl:variable name="title">
@@ -26,7 +25,6 @@
       <head>
         <meta charset="utf-8"/>
         <title><xsl:value-of select="$title" /></title>
-        <link rel="shortcut icon" href="./icons/notepad.svg" />
         <style>
           .entity-form { padding:20px; }
           .entity-form .field { padding: 4px; margin:1px; background: #eee; }
@@ -46,9 +44,6 @@
         </form>
           <footer>
             <hr />
-            <p align="middle">
-              <a href="./icons/credits.html" target="_blank">credits for icons</a>
-            </p>
           </footer>
       </body>
     </html>
@@ -63,7 +58,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:entity | ef:ip-address | ef:subnet-mask">
+  <xsl:template match="entity | ip-address | subnet-mask">
     <!-- <p>skip <b><xsl:value-of select="name()" /></b></p> -->
     <xsl:apply-templates />
   </xsl:template>
@@ -76,7 +71,7 @@
   </xsl:template> -->
 
 
-  <xsl:template match="ef:name">
+  <xsl:template match="name">
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
       <xsl:with-param name="value" select="text()" />
@@ -88,7 +83,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:entity-type">
+  <xsl:template match="entity-type">
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
       <xsl:with-param name="value" select="text()" />
@@ -100,7 +95,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:model">
+  <xsl:template match="model">
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
       <xsl:with-param name="value" select="text()" />
@@ -112,7 +107,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:serial-no">
+  <xsl:template match="serial-no">
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
       <xsl:with-param name="value" select="text()" />
@@ -124,7 +119,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:mac-address">
+  <xsl:template match="mac-address">
     <br />
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
@@ -137,7 +132,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:ipv4">
+  <xsl:template match="ipv4">
     <br />
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
@@ -150,7 +145,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:ipv6">
+  <xsl:template match="ipv6">
     <br />
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
@@ -163,7 +158,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:subnet-bitmask">
+  <xsl:template match="subnet-bitmask">
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
       <xsl:with-param name="value" select="text()" />
@@ -175,7 +170,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:subnet-cidr">
+  <xsl:template match="subnet-cidr">
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
       <xsl:with-param name="value" select="text()" />
@@ -187,7 +182,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:firmware-version">
+  <xsl:template match="firmware-version">
     <br />
     <xsl:call-template name="insertTextField">
       <xsl:with-param name="label" select="local-name()" />
@@ -200,7 +195,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:url">
+  <xsl:template match="url">
     <br />
     <xsl:call-template name="insertURL">
       <xsl:with-param name="label" select="local-name()" />
@@ -213,7 +208,7 @@
   </xsl:template>
 
 
-  <xsl:template match="ef:description">
+  <xsl:template match="description">
     <br />
     <xsl:call-template name="insertTextArea">
       <xsl:with-param name="label" select="local-name()" />

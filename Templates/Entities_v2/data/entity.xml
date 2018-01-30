@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<?xml-stylesheet href="./stylesheets/entity.xsl" type="text/xsl" ?>
+<?xml-stylesheet href="./style/entity.xsl" type="text/xsl" ?>
 
 <entity
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.entity-form.org .\structure\entity.xsd"
-  xmlns="http://www.entity-form.org">
+  xsi:noNamespaceSchemaLocation=".\structure\entity.xsd">
 
   <name>AB</name>
   <entity-type>?</entity-type>
