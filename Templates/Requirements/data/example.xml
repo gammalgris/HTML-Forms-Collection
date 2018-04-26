@@ -22,6 +22,14 @@
     <author>KK</author>
     <author>LL</author>
   </authors>
-  <description>Hello World!</description>
-  <comment>This works.</comment>
+  <description>
+    Hello World! <br/>
+    What's up <br/>
+    Tell me.
+  </description>
+  <comment>
+    This works. <br/>
+    Ola, que tal? <br/>
+    Tais ta gueule!
+  </comment>
 </requirement>

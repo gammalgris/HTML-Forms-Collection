@@ -9,7 +9,13 @@
   <xsl:output method="html" version="1.0" encoding="UTF-8" />
 
 
-  <xsl:template match="/">
+  <xsl:template match="node()|@*">
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="requirement">
     <html>
       <head>
         <title>
@@ -34,7 +40,7 @@
     </html>
   </xsl:template>
 
-  <xsl:template match="id/text()">
+  <xsl:template match="id">
     <tr>
       <td style="background-color: #808080; color: #FFFFFF;" width="20%">
         <b>ID</b>
@@ -45,7 +51,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="name/text()">
+  <xsl:template match="name">
     <tr>
       <td style="background-color: #808080; color: #FFFFFF;">
         <b>Name</b>
@@ -56,7 +62,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="purpose/text()">
+  <xsl:template match="purpose">
     <tr>
       <td style="background-color: #808080; color: #FFFFFF;">
         <b>Purpose</b>
@@ -67,7 +73,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="scope/text()">
+  <xsl:template match="scope">
     <tr>
       <td style="background-color: #808080; color: #FFFFFF;">
         <b>Scope</b>
@@ -78,7 +84,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="priority/text()">
+  <xsl:template match="priority">
     <tr>
       <td style="background-color: #808080; color: #FFFFFF;">
         <b>Priority</b>
@@ -89,7 +95,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="status/text()">
+  <xsl:template match="status">
     <tr>
       <td style="background-color: #808080; color: #FFFFFF;">
         <b>Status</b>
@@ -155,30 +161,30 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="author/text()">
+  <xsl:template match="author">
     <li>
       <xsl:value-of select="." />
     </li>
   </xsl:template>
 
-  <xsl:template match="description/text()">
+  <xsl:template match="description">
     <tr>
       <td style="background-color: #808080; color: #FFFFFF;">
         <b>Description</b>
       </td>
       <td>
-        <xsl:value-of select="." />
+	    <xsl:apply-templates/>
       </td>
     </tr>
   </xsl:template>
 
-  <xsl:template match="comment/text()">
+  <xsl:template match="comment">
     <tr>
       <td style="background-color: #808080; color: #FFFFFF;">
         <b>Comment</b>
       </td>
       <td>
-        <xsl:value-of select="." />
+	    <xsl:apply-templates/>
       </td>
     </tr>
   </xsl:template>
