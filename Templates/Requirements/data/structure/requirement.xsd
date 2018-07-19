@@ -65,6 +65,22 @@
     </xsd:annotation>
   </xsd:complexType>
 
+  <xsd:simpleType name="ImplementationStatusElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        This element contains the implementation status of a requirement.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="implementation in progress" />
+      <xsd:enumeration value="implemented" />
+      <xsd:enumeration value="partially implemented" />
+      <xsd:enumeration value="implementation postponed" />
+      <xsd:enumeration value="not implemented" />
+      <xsd:enumeration value="not implementable" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
   <xsd:complexType name="NameElement">
     <xsd:annotation>
       <xsd:documentation>
@@ -127,6 +143,7 @@
       <xsd:element name="scope" type="ScopeElement" minOccurs="1" maxOccurs="1" />
       <xsd:element name="priority" type="PriorityElement" minOccurs="1" maxOccurs="1" />
       <xsd:element name="status" type="StatusElement" minOccurs="1" maxOccurs="1" />
+	  <xsd:element name="implementation-status" type="ImplementationStatusElement" minOccurs="1" maxOccurs="1" />
       <xsd:element name="parents" type="ParentsElement" minOccurs="1" maxOccurs="1" />
       <xsd:element name="children" type="ChildrenElement" minOccurs="1" maxOccurs="1" />
       <xsd:element name="authors" type="AuthorsElement" minOccurs="1" maxOccurs="1" />
@@ -150,8 +167,8 @@
       </xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="implemented" />
-      <xsd:enumeration value="pending" />
+      <xsd:enumeration value="new" />
+      <xsd:enumeration value="accepted" />
       <xsd:enumeration value="deprecated" />
     </xsd:restriction>
   </xsd:simpleType>

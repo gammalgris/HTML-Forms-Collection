@@ -11,6 +11,7 @@
   <scope>concept</scope>
   <priority>low</priority>
   <status>deprecated</status>
+  <implementation-status>not implemented</implementation-status>
   <parents>
     <parent>REQ-0000</parent>
   </parents>
@@ -23,13 +24,13 @@
     <author>LL</author>
   </authors>
   <description>
-    Hello World! <br/>
-    What's up <br/>
-    Tell me.
+    first line <br/>
+    send line <br/>
+    third line
   </description>
   <comment>
-    This works. <br/>
-    Ola, que tal? <br/>
-    Tais ta gueule!
+    first line <br/>
+    send line <br/>
+    third line
   </comment>
 </requirement>

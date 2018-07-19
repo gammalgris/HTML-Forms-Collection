@@ -51,6 +51,17 @@
     </tr>
   </xsl:template>
 
+  <xsl:template match="implementation-status">
+    <tr>
+      <td style="background-color: #808080; color: #FFFFFF;" width="20%">
+        <b>Implementation Status</b>
+      </td>
+      <td>
+        <xsl:value-of select="." />
+      </td>
+    </tr>
+  </xsl:template>
+
   <xsl:template match="name">
     <tr>
       <td style="background-color: #808080; color: #FFFFFF;">
